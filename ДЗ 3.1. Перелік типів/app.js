@@ -13,5 +13,8 @@ console.log(typeof typeNull);
 let bigint = 12465834221679n;
 console.log(typeof bigint);
 
+let obj = {};
+console.log(typeof obj);
+
 let symbol = Symbol("q");
 console.log(typeof symbol);
