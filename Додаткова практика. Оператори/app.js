@@ -1,6 +1,6 @@
 // Task 1
 
-let enteredValue = parseInt(prompt('Enter any one digit number:'));
+let enteredValue = parseInt(prompt('Task1 / Enter any one digit number:'));
 
 switch (enteredValue) {
     case 1:
@@ -20,8 +20,8 @@ switch (enteredValue) {
 
 // Task 2
 
-let firstNumber = Number(prompt('Enter the first number:'));
-let secondNumber = Number(prompt('Enter the second number'));
+let firstNumber = Number(prompt('Task2 / Enter the first number:'));
+let secondNumber = Number(prompt('Task2 / Enter the second number'));
 
 if (firstNumber > secondNumber) {
     alert(`${firstNumber} is bigger than ${secondNumber}`);
@@ -34,7 +34,7 @@ if (firstNumber > secondNumber) {
 
 // Task 3
 
-let enteredNumber = Number(prompt('Enter a two digit number:'));
+let enteredNumber = Number(prompt('Task3 / Enter a two digit number:'));
 
 let secondDigit = enteredNumber % 10;
 let firstDigit = (enteredNumber - secondDigit) / 10;
@@ -50,10 +50,34 @@ if (firstDigit > secondDigit) {
 
 // Task 4
 
-let task4Number = Number(prompt('Enter any number:'));
+let task4Number = Number(prompt('Task4 / Enter any number:'));
 
 if (task4Number % 2) {
     alert(`${task4Number} is odd`);
 } else {
     alert(`${task4Number} is even`);
+}
+
+
+// Task 5
+
+let task5Number = Number(prompt('Task5 / Enter any number:'));
+
+let lastDigit = task5Number % 10;
+
+if (lastDigit % 2) {
+    alert(`The last digit ${lastDigit} of the entered number ${task5Number} is odd`);
+} else {
+    alert(`The last digit ${lastDigit} of the entered number ${task5Number} is even`);
+}
+
+
+// Task 6
+
+let checkedNumber = Number(prompt('Task6 / Enter any number to check:'));
+
+if (checkedNumber >= 0 && checkedNumber <= 500) {
+    alert('Входить');
+} else {
+    alert('Не входить');
 }
