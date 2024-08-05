@@ -30,3 +30,19 @@ if (firstNumber > secondNumber) {
 } else {
     alert(`${firstNumber} is equal to ${secondNumber}`);
 }
+
+
+// Task 3
+
+let enteredNumber = Number(prompt('Enter a two digit number:'));
+
+let secondDigit = enteredNumber % 10;
+let firstDigit = (enteredNumber - secondDigit) / 10;
+
+if (firstDigit > secondDigit) {
+    alert(`${firstDigit} is bigger than ${secondDigit}`);
+} else if (firstDigit < secondDigit) {
+    alert(`${firstDigit} is smaller than ${secondDigit}`);
+} else {
+    alert(`${firstDigit} is equal to ${secondDigit}`);
+}
