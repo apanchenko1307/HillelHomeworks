@@ -46,3 +46,14 @@ if (firstDigit > secondDigit) {
 } else {
     alert(`${firstDigit} is equal to ${secondDigit}`);
 }
+
+
+// Task 4
+
+let task4Number = Number(prompt('Enter any number:'));
+
+if (task4Number % 2) {
+    alert(`${task4Number} is odd`);
+} else {
+    alert(`${task4Number} is even`);
+}
