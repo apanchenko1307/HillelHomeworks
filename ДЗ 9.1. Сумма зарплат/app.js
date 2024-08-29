@@ -6,16 +6,18 @@ let company = {
     }
 };
 
-function sumSalaries() {
+function sumSalaries(company) {
     let sum = 0;
     for (let key in company) {
-        if (typeof(key) === Object) {
-            sumSalaries()
-        } else {
-            for (let i = 0; i < key.length; i++) {
-                sum += key[i].salary;
+        if (Array.isArray(company[key])) {
+            for (let i = 0; i < company[key].length; i++) {
+                sum += company[key][i].salary;
             }
+        } else {
+            sum += sumSalaries(company[key]);
         }
-    };
+    }
     return sum;
-}
+};
+
+console.log(sumSalaries(company));
