@@ -2,7 +2,7 @@ function doCycle() {
     let value;
     for (let i = 0; i < 10; i++) {
         value = prompt('Введіть число більше за 100:');
-        if (parseInt(value) > 100 || isNaN(parseInt(value)) || value !== undefined) {
+        if (parseInt(value) > 100 || isNaN(parseInt(value))) {
             break;
         };
     };
