@@ -13,12 +13,11 @@ function addCircles(parent, elements) {
     elements.forEach((_, index) => {
         const circle = document.createElement('div');
         circle.classList.add("circle");
-        circle.dataset.index = index; // Добавляем индекс в качестве атрибута
+        circle.dataset.index = index;
         parent.appendChild(circle);
     });
 }
 
-// Обработка кликов на круги
 circlesParent.addEventListener("click", (event) => {
     if (event.target.classList.contains("circle")) {
         const index = parseInt(event.target.dataset.index, 10);
@@ -26,28 +25,24 @@ circlesParent.addEventListener("click", (event) => {
     }
 });
 
-// Обработка кликов на кнопку назад
 back.addEventListener("click", () => {
     showSlide(counter - 1);
 });
 
-// Обработка кликов на кнопку вперед
 forward.addEventListener("click", () => {
     showSlide(counter + 1);
 });
 
-// Функция для показа слайда
 function showSlide(index) {
-    if (index < 0 || index >= elements.length) return; // Проверка границ
+    if (index < 0 || index >= elements.length) return;
 
-    elements[counter].classList.add("hidden"); // Скрыть текущий слайд
+    elements[counter].classList.add("hidden");
     counter = index;
-    elements[counter].classList.remove("hidden"); // Показать новый слайд
+    elements[counter].classList.remove("hidden");
 
     updateButtons();
 }
 
-// Функция для обновления видимости кнопок
 function updateButtons() {
     back.classList.toggle("hidden", counter === 0);
     forward.classList.toggle("hidden", counter === elements.length - 1);
