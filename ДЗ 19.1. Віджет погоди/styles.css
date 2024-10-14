@@ -63,11 +63,35 @@ body {
 
 .details {
     margin-top: 20px;
+    position: relative;
 }
 
 .detail {
     font-size: 16px;
     margin-bottom: 5px;
+}
+
+.refresh-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background-color: #2980b9;
 }
 
 .hidden {
