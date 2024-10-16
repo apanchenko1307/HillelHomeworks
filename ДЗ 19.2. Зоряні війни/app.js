@@ -62,6 +62,9 @@ document.querySelector('.content').addEventListener('click', function(event) {
         })
         .then(result => {
             createModal(result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 });
@@ -96,13 +99,50 @@ function createNewElementsInModal(object, modalContent) {
     const keys = Object.keys(object);
     for (let key of keys) {
         if (key !== 'url' && key !== 'created' && key !== 'edited') {
-            const createdElement = document.createElement('p');
-            createdElement.innerHTML = `<strong>${(key.charAt(0).toUpperCase() + key.slice(1)).replace(/_/g, ' ')}:</strong> ${object[key]}`;
-            modalContent.appendChild(createdElement);
+            let value = object[key];
+
+            if (Array.isArray(value) && value.length > 0 && /^https:\/\/swapi\.dev\/api\//.test(value[0])) {
+                Promise.all(value.map(item => getItemName(item)))
+                    .then(results => {
+                        const createdElement = document.createElement('p');
+                        createdElement.innerHTML = `<strong>${(key.charAt(0).toUpperCase() + key.slice(1)).replace(/_/g, ' ')}:</strong> ${results.join(', ')}`;
+                        modalContent.appendChild(createdElement);
+                    });
+
+            } else if (/^https:\/\/swapi\.dev\/api\//.test(value)) {
+                getItemName(value)
+                    .then(result => {
+                        const createdElement = document.createElement('p');
+                        createdElement.innerHTML = `<strong>${(key.charAt(0).toUpperCase() + key.slice(1)).replace(/_/g, ' ')}:</strong> ${result}`;
+                        modalContent.appendChild(createdElement);
+                    });
+
+            } else {
+                const createdElement = document.createElement('p');
+                createdElement.innerHTML = `<strong>${(key.charAt(0).toUpperCase() + key.slice(1)).replace(/_/g, ' ')}:</strong> ${value}`;
+                modalContent.appendChild(createdElement);
+            }
         }
     }
 }
 
+function getItemName(item) {
+    return fetch(item)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error');
+            }
+            return response.json();
+        })
+        .then(result => {
+            const firstKey = Object.keys(result)[0];
+            return result[firstKey];
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            return 'Error loading data';
+        });
+}
 
 function showElements(result) {
     const elements = result.results;
