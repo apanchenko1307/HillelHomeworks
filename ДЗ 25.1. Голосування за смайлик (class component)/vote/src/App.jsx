@@ -52,7 +52,7 @@ export default class App extends Component {
 
     return (
       <div className='wrapper'>
-        <p>Голосування за найкращий смайлик</p>
+        <h1>Голосування за найкращий смайлик</h1>
         <div className="row">
           {this.state.smileys.map((smiley, index) => (
             <div className="column" key={index}>
@@ -61,8 +61,10 @@ export default class App extends Component {
             </div>
           ))}
         </div>
-        <button onClick={this.showResults}>Показати результати</button>
-        <button onClick={this.resetResults}>Очистити</button>
+        <div className="buttons">
+          <button onClick={this.showResults}>Показати результати</button>
+          <button onClick={this.resetResults}>Очистити</button>
+        </div>
         {this.state.highestSmiley && (
           <Result imgIndex={this.state.highestSmiley.img} count={this.state.highestSmiley.count} />
       )}

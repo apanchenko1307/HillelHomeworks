@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Img from './Img';
+import './Result.css'
 
 export default class Result extends Component {
   render() {
