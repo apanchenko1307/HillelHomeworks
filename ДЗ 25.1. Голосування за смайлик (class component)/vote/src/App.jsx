@@ -6,7 +6,7 @@ import Result from './Result';
 
 export default class App extends Component {
 
-  state = {
+  defaultState = {
     smileys: [
       { name: "Smiley 1", img: "1.png", count: 0 },
       { name: "Smiley 2", img: "2.png", count: 0 },
@@ -16,6 +16,16 @@ export default class App extends Component {
     ],
     highestSmiley: null,
   };
+
+  constructor(props) {
+    super(props);
+    const savedState = JSON.parse(localStorage.getItem("stateStorage"));
+    this.state = savedState ? savedState : this.defaultState;
+  }
+
+componentDidUpdate() {
+  localStorage.setItem("stateStorage", JSON.stringify(this.state));
+}
 
   handleVote = (event) => {
     const smileyIndex = parseInt(event.target.getAttribute('data-index'));
